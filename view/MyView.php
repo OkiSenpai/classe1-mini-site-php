@@ -15,13 +15,16 @@
             background-color: lightblue;
             margin: 0;
         }
-        h1{
+
+        h1 {
             font-size: xxx-large;
         }
 
         .menu {
             background-color: #333;
             overflow: hidden;
+            position: fixed;
+            width: 100%;
         }
 
         .menu .link {
@@ -43,11 +46,30 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            margin:0 60px;
+            margin: 0 15%;
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: xx-large;
+        }
+
+        code {
+            font-size: xxx-large;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
     </style>
 </head>
-<html>
+
 <body>
     <nav class="menu">
         <a class="link" href="./">Accueil</a>
@@ -56,14 +78,36 @@
         <a class="link" href="./?p=javascript">Javascript</a>
     </nav>
     <main>
-    <h1><?= $decription['titre'] ?> </h1>
-    <p class="description"><?= nl2br($text) ?></p>
-    
-    
-     
-</main>
+        <h1><?= $decription['titre'] ?> </h1>
+        <p class="description"><?= nl2br($text) ?></p>
+        <h2><?= $varH2['title'] ?></h2>
+        <p class="description"><?= nl2br($varH2['description']) ?></p>
+        <pre><code><?= $jsExemple1 ?> <br><?= $jsExemple1output ?></code></pre>
+        <hr>
+        <pre><code><?= $jsExemple2 ?> <br><?= $jsExemple2output ?></code></pre>
+
+        <h2><?= $operateursH2 ?></h2>
+        <p class="description"><?= nl2br($operateursDescription) ?></p>
+        <pre><code><?= $operateursExemples ?> <br><?= $operateursOutput ?></code></pre>
+        <pre><code><?= $operateursExemples2 ?> <br><?= $operateursOutput2 ?></code></pre>
+
+        <h2><?= $conditionsH2 ?></h2>
+        <p class="description"><?= nl2br($conditionsDescription) ?></p>
+        <pre><code><?= $conditionsExemples ?> <br><?= $conditionsOutput ?></code></pre>
+        <pre><code><?= $conditionsExemples2 ?> <br><?= $conditionsOutput2 ?></code></pre>
+
+        <h2><?= $bouclesH2 ?></h2>
+        <p class="description"><?= nl2br($bouclesDescription) ?></p>
+        <pre><code><?= $bouclesExemples ?> <br><?= $bouclesOutput ?></code></pre>
+        <pre><code><?= $bouclesExemples2 ?> <br><?= $bouclesOutput2 ?></code></pre>
+        
 
 
+
+    </main>
+    <footer>
+        &copy; <?= date('Y') ?> My Website. All rights reserved.
+    </footer>
 </body>
 
 </html>
