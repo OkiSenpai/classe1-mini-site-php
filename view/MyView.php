@@ -18,6 +18,7 @@
 
         h1 {
             font-size: xxx-large;
+            text-align: center;
         }
 
         .menu {
@@ -43,11 +44,10 @@
         }
 
         main {
-            display: flex;
-            flex-direction: column;
+            
             align-items: center;
             margin: 0 15%;
-            padding: 80px 0;
+            padding:80px 0;
         }
 
         h2 {
@@ -76,34 +76,69 @@
         <a class="link" href="./?p=php">PHP</a>
         <a class="link" href="./?p=sql">SQL</a>
         <a class="link" href="./?p=javascript">Javascript</a>
+        <a class="link" href="./?p=python">Python</a>
     </nav>
     <main>
-        <h1><?= $decription['titre'] ?> </h1>
-        <p class="description"><?= nl2br($text) ?></p>
-        <h2><?= $varH2['title'] ?></h2>
-        <p class="description"><?= nl2br($varH2['description']) ?></p>
-        <pre><code><?= $jsExemple1 ?> <br><?= $jsExemple1output ?></code></pre>
-        <hr>
-        <pre><code><?= $jsExemple2 ?> <br><?= $jsExemple2output ?></code></pre>
+        <?php if (isset($_GET['p']) && $_GET['p'] == 'javascript'): ?>
+            <h1><?= $titrepage ?></h1>
+            <h2><?= $varH2['title'] ?></h2>
+            <p class="description"><?= nl2br($varH2['description']) ?></p>
+            <pre><code><?= $jsExemple1 ?> <br><?= $jsExemple1output ?></code></pre>
+            <hr>
+            <pre><code><?= $jsExemple2 ?> <br><?= $jsExemple2output ?></code></pre>
 
-        <h2><?= $operateursH2 ?></h2>
-        <p class="description"><?= nl2br($operateursDescription) ?></p>
-        <pre><code><?= $operateursExemples ?> <br><?= $operateursOutput ?></code></pre>
-        <pre><code><?= $operateursExemples2 ?> <br><?= $operateursOutput2 ?></code></pre>
+            <h2><?= $operateursH2 ?></h2>
+            <p class="description"><?= nl2br($operateursDescription) ?></p>
+            <pre><code><?= $operateursExemples ?> <br><?= $operateursOutput ?></code></pre>
+            <pre><code><?= $operateursExemples2 ?> <br><?= $operateursOutput2 ?></code></pre>
 
-        <h2><?= $conditionsH2 ?></h2>
-        <p class="description"><?= nl2br($conditionsDescription) ?></p>
-        <pre><code><?= $conditionsExemples ?> <br><?= $conditionsOutput ?></code></pre>
-        <pre><code><?= $conditionsExemples2 ?> <br><?= $conditionsOutput2 ?></code></pre>
+            <h2><?= $conditionsH2 ?></h2>
+            <p class="description"><?= nl2br($conditionsDescription) ?></p>
+            <pre><code><?= $conditionsExemples ?> <br><?= $conditionsOutput ?></code></pre>
+            <pre><code><?= $conditionsExemples2 ?> <br><?= $conditionsOutput2 ?></code></pre>
 
-        <h2><?= $bouclesH2 ?></h2>
-        <p class="description"><?= nl2br($bouclesDescription) ?></p>
-        <pre><code><?= $bouclesExemples ?> <br><?= $bouclesOutput ?></code></pre>
-        <pre><code><?= $bouclesExemples2 ?> <br><?= $bouclesOutput2 ?></code></pre>
-        
+            <h2><?= $bouclesH2 ?></h2>
+            <p class="description"><?= nl2br($bouclesDescription) ?></p>
+            <pre><code><?= $bouclesExemples ?> <br><?= $bouclesOutput ?></code></pre>
+            <pre><code><?= $bouclesExemples2 ?> <br><?= $bouclesOutput2 ?></code></pre>
 
+            <h2><?= $whileH2 ?></h2>
+            <p class="description"><?= nl2br($whileDescription) ?></p>
+            <pre><code><?= $whileExemples ?> <br><?= $whileOutput ?></code></pre>
+            <pre><code><?= $whileExemples2 ?> <br><?= $whileOutput2 ?></code></pre>
+        <?php elseif (isset($_GET['p']) && $_GET['p'] == 'php'): ?>
+            <h1><?= $titrepage ?></h1>
+            <?php foreach($text as $phpDescriptionForEach): ?>
+                <h2><?= $phpDescriptionForEach['title'] ?></h2>
+                <p class="description"><?= nl2br($phpDescriptionForEach['description']) ?></p>
+            <?php endforeach; ?>
+            <br>
 
+            <h1>Exemples</h1>
+                <br>
+            <?php foreach($topics as $topic): ?>
+                <h2><?= $topic['title'] ?></h2>
+                <p class="description"><?= nl2br($topic['description']) ?></p>
+                <?php foreach($topic['examples'] as $example): ?>
+                    <pre><code><?= $example['code'] ?> <br><?= $example['output'] ?></code></pre>
+                <?php endforeach; ?>
+            <?php endforeach; ?>
+        <?php elseif (isset($_GET['p']) && $_GET['p'] == 'sql'): ?>
+            <!-- Prikaz za SQL stranicu -->
+            <h1><?= $titrepage ?></h1>
+            <p class="description"><?= nl2br($text) ?></p>
+            <!-- Dodajte ostale SQL podatke ovde -->
 
+        <?php elseif (isset($_GET['p']) && $_GET['p'] == 'python'): ?>
+            <!-- Prikaz za Python stranicu -->
+            <h1><?= $titrepage ?></h1>
+            <p class="description"><?= nl2br($text) ?></p>
+
+            <!-- Dodajte ostale Python podatke ovde --> 
+        <?php else: ?>
+            <h1><?= $titrepage ?></h1>
+            <p class="description"><?= nl2br($text) ?></p>
+        <?php endif; ?>
     </main>
     <footer>
         &copy; <?= date('Y') ?> My Website. All rights reserved.
