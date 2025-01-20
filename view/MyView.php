@@ -55,7 +55,7 @@
         }
 
         code {
-            font-size: xxx-large;
+            font-size: xx-large;
         }
 
         footer {
